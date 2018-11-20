@@ -41,7 +41,11 @@
 
 ## Version
 
- - v1.0 (2018-11-20)
+ - [v1.0](https://github.com/peace098beat/PomodoroTimer/releases/tag/v1.0) (2018-11-20)
+
+## Install
+
+インストールは必要ありません[ここ](https://github.com/peace098beat/PomodoroTimer/releases/tag/v1.0)からexeファイルをダウンロードして使ってください.
 
 ## Author
 
