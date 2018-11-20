@@ -22,12 +22,11 @@ namespace PomodoroTimer
         }
         private TimerState AppState = TimerState.Wait;
 
-        private int WorkingTimeLimitSec = 10;// 25*60; //分 25;
-        private int RelaxTimerLimitSec = 10;// 5*60; //分  5;
+        private int WorkingTimeLimitSec =  25*60;   //25分;
+        private int RelaxTimerLimitSec =  5*60;     //5分;
 
         private Stopwatch stopwatch;
         private int LimitTime;
-        private FormWindowState preWindowState;
 
         public Form1()
         {
@@ -40,7 +39,6 @@ namespace PomodoroTimer
             this.stopwatch = new Stopwatch();
             this.stopwatch.Stop();
 
-            // 残り時間を初期化
 
             this.Width = 220;
             this.Height = 200;
