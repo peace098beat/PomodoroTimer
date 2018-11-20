@@ -13,9 +13,11 @@
 ![app run](demo/demo-v1-01.png)
 
 作業中画面
+
 ![working](demo/demo-v1-02.png)
 
 休憩画面
+
 ![relax](demo/demo-v1-03.png)
 
 ## ポモドーロ・テクニックについて
