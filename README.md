@@ -1,7 +1,7 @@
 
 # PomodorTimer
 
-![catch](demo/eyecache-v1.png)
+![catch](demo/eyecatch-v1.png)
 
 ただのポモドーロタイマーです。ホントにただのポモドーロタイマーです.
 
