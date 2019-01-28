@@ -41,8 +41,6 @@ namespace PomodoroTimer
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.WindowState = FormWindowState.Normal;
 
-            // Multi Display 用
-            ShowSecondScreen();
 
         }
 
