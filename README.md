@@ -41,7 +41,13 @@
 
 ## Version
 
+ - [v1.1](https://github.com/peace098beat/PomodoroTimer/releases/tag/v1.1) (2019-01-28)
  - [v1.0](https://github.com/peace098beat/PomodoroTimer/releases/tag/v1.0) (2018-11-20)
+
+
+## Release
+
+ - [v1.1] マルチディスプレイに対応
 
 ## Install
 

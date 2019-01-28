@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PomodoroTimer
@@ -22,11 +16,12 @@ namespace PomodoroTimer
         }
         private TimerState AppState = TimerState.Wait;
 
-        private int WorkingTimeLimitSec =  25*60;   //25分;
-        private int RelaxTimerLimitSec =  5*60;     //5分;
+        private int WorkingTimeLimitSec = 25 * 60;   //25分;
+        private int RelaxTimerLimitSec = 5 * 60;     //5分;
 
         private Stopwatch stopwatch;
         private int LimitTime;
+        private Form SecondForm;
 
         public Form1()
         {
@@ -46,8 +41,58 @@ namespace PomodoroTimer
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.WindowState = FormWindowState.Normal;
 
+            // Multi Display 用
+            ShowSecondScreen();
+
         }
 
+        /// <summary>
+        /// セカンドディスプレイがある場合に、起動
+        /// </summary>
+        private void ShowSecondScreen()
+        {
+
+            if (Screen.AllScreens.Length == 1)
+            {
+                // シングルスクリーンなのでなにもしない
+                return;
+            }
+
+            // フォームが閉じている場合は開く
+            if (SecondForm == null || SecondForm.IsDisposed)
+            {
+                // 閉じている
+                this.SecondForm = new Form();
+                this.SecondForm.StartPosition = FormStartPosition.Manual;
+
+                Screen _MainFormScrn = Screen.FromPoint(this.Location);
+
+                foreach (Screen screen in Screen.AllScreens)
+                {
+                    if (screen != _MainFormScrn)
+                    {
+                        this.SecondForm.Location = screen.Bounds.Location;
+                    }
+                }
+
+                SecondForm.WindowState = FormWindowState.Maximized;
+                SecondForm.Show();
+
+                SecondForm.BackColor = Color.LightSkyBlue;
+            }
+            if (SecondForm.TopMost != true) SecondForm.TopMost = true;
+            if (SecondForm.WindowState != FormWindowState.Maximized) SecondForm.WindowState = FormWindowState.Maximized;
+            if (SecondForm.FormBorderStyle != FormBorderStyle.None) SecondForm.FormBorderStyle = FormBorderStyle.None;
+
+        }
+
+        /// <summary>
+        /// マルチディスプレイ用
+        /// </summary>
+        private void CloseSecondScreen()
+        {
+            this.SecondForm?.Close();
+        }
 
         private void timer_every1s_Tick(object sender, EventArgs e)
         {
@@ -55,6 +100,9 @@ namespace PomodoroTimer
             switch (AppState)
             {
                 case TimerState.Wait:
+                    // マルチスクリーン用
+                    CloseSecondScreen();
+
                     this.button_start.Visible = true;
                     this.button_start.Enabled = true;
                     this.label_lasttime.Visible = false;
@@ -75,7 +123,7 @@ namespace PomodoroTimer
                     // 画面位置
                     this.TopMost = false;
 
-                    if(this.WindowState == FormWindowState.Maximized) this.WindowState = FormWindowState.Normal;
+                    if (this.WindowState == FormWindowState.Maximized) this.WindowState = FormWindowState.Normal;
 
                     this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
@@ -83,6 +131,10 @@ namespace PomodoroTimer
                     break;
 
                 case TimerState.Working:
+                    // マルチスクリーン用
+                    CloseSecondScreen();
+
+
                     this.LimitTime = WorkingTimeLimitSec;
                     this.button_start.Visible = false;
                     this.label_lasttime.Visible = true;
@@ -103,6 +155,10 @@ namespace PomodoroTimer
                     break;
 
                 case TimerState.Relax:
+                    // マルチスクリーン用
+                    ShowSecondScreen();
+
+
                     this.LimitTime = RelaxTimerLimitSec;
                     this.button_start.Visible = false;
                     this.label_lasttime.Visible = true;
@@ -117,8 +173,9 @@ namespace PomodoroTimer
 
                     // 画面位置
                     this.TopMost = true;
-                        this.WindowState = FormWindowState.Maximized;
-                    this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                    this.WindowState = FormWindowState.Maximized;
+                    //this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                    this.FormBorderStyle = FormBorderStyle.None; // 閉じれない
                     break;
 
                 default:
@@ -186,8 +243,8 @@ namespace PomodoroTimer
         {
 
             this.label_lasttime.Margin = new Padding(0);
-            this.label_lasttime.Left = (int)Math.Ceiling((this.Width - this.label_lasttime.Width) / 2.2) ; // 2.2は経験値 2ではずれる
-            this.label_lasttime.Top = (int)Math.Ceiling((this.Height - this.label_lasttime.Height) / 2.2) ;
+            this.label_lasttime.Left = (int)Math.Ceiling((this.Width - this.label_lasttime.Width) / 2.2); // 2.2は経験値 2ではずれる
+            this.label_lasttime.Top = (int)Math.Ceiling((this.Height - this.label_lasttime.Height) / 2.2);
 
             this.button_start.Margin = new Padding(0);
             this.button_start.Width = (int)(this.Width * 0.7);
