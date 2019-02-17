@@ -41,13 +41,14 @@
 
 ## Version
 
- - [v1.1](https://github.com/peace098beat/PomodoroTimer/releases/tag/v1.1) (2019-01-28)
- - [v1.0](https://github.com/peace098beat/PomodoroTimer/releases/tag/v1.0) (2018-11-20)
+ - [最新版 v1.1.3](https://github.com/peace098beat/PomodoroTimer/tags)
 
 
 ## Release
 
- - [v1.1] マルチディスプレイに対応
+ - [v1.1] マルチディスプレイに対応 (2019-01-28) 
+ - [v1.1.2] バグフィックス ウィンドウ2に上手く表示されないバグをフィックス (2019-02-17)
+ - [v1.1.3] 待機画面を最善面表示に変更。スタートし忘れがあるため。 (2019-02-17)
 
 ## Install
 
