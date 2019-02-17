@@ -16,8 +16,8 @@ namespace PomodoroTimer
         }
         private TimerState AppState = TimerState.Wait;
 
-        private int WorkingTimeLimitSec = 25 * 60;   //25分;
-        private int RelaxTimerLimitSec = 5 * 60;     //5分;
+        private int WorkingTimeLimitSec = 1; // 25 * 60;   //25分;
+        private int RelaxTimerLimitSec = 1; //5 * 60;     //5分;
 
         private Stopwatch stopwatch;
         private int LimitTime;
@@ -65,19 +65,21 @@ namespace PomodoroTimer
 
                 Screen _MainFormScrn = Screen.FromPoint(this.Location);
 
+                Debug.WriteLine(_MainFormScrn.DeviceName);
+
                 foreach (Screen screen in Screen.AllScreens)
                 {
-                    if (screen != _MainFormScrn)
+                    if (screen.DeviceName != _MainFormScrn.DeviceName)
                     {
                         this.SecondForm.Location = screen.Bounds.Location;
                     }
                 }
 
                 SecondForm.WindowState = FormWindowState.Maximized;
-                SecondForm.Show();
-
                 SecondForm.BackColor = Color.LightSkyBlue;
+                SecondForm.Show();
             }
+
             if (SecondForm.TopMost != true) SecondForm.TopMost = true;
             if (SecondForm.WindowState != FormWindowState.Maximized) SecondForm.WindowState = FormWindowState.Maximized;
             if (SecondForm.FormBorderStyle != FormBorderStyle.None) SecondForm.FormBorderStyle = FormBorderStyle.None;
