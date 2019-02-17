@@ -121,7 +121,7 @@ namespace PomodoroTimer
                     this.ForeColor = fore_color;
 
                     // 画面位置
-                    this.TopMost = false;
+                    this.TopMost = true;
 
                     if (this.WindowState == FormWindowState.Maximized) this.WindowState = FormWindowState.Normal;
 
