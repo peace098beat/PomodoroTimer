@@ -86,7 +86,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(248, 169);
+            this.ClientSize = new System.Drawing.Size(270, 179);
             this.Controls.Add(this.button_start);
             this.Controls.Add(this.label_lasttime);
             this.Controls.Add(this.label_message);
