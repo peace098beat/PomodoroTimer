@@ -81,8 +81,8 @@ namespace PomodoroTimer
 
             foreach (var item in copyTable)
             {
-                //double min = item.Value / 10 / 60.0;
-                double min = item.Value ;
+                double min = item.Value / 10 / 60.0;
+                //double min = item.Value ;
                 int dmin = (int)Math.Ceiling(min);
                 
                 int Tick = 15; // 30min
