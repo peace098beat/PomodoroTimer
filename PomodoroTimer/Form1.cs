@@ -18,7 +18,7 @@ namespace PomodoroTimer
         }
         private TimerState AppState = TimerState.Wait;
 
-        private int WorkingTimeLimitSec = 1;// 25 * 60;   //25分;
+        private int WorkingTimeLimitSec =  25 * 60;   //25分;
         private int RelaxTimerLimitSec = 5 * 60;     //5分;
 
         private Stopwatch stopwatch;
